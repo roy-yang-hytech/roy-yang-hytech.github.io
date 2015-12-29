@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+
+<body>
+<h1>角色管理-使用者</h1>
+<h3>部門</h3>
+<label><input type="checkbox" name="department" value="IT">IT</label>
+<label><input type="checkbox" name="department" value="FET">FET</label>
+<label><input type="checkbox" name="department" value="BBB">BBB</label>
+<br/>
+<label><input type="checkbox" name="department" value="BU">BU</label>
+<label><input type="checkbox" name="department" value="AAA">AAA</label>
+<label><input type="checkbox" name="department" value="CCC">CCC</label>
+<br/>
+<h3>用戶名稱</h3>
+<input type="text" id="inputUserName" style="width:300px;">
+<br/><br/>
+<div id="checkUser">
+</div>
+</body>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+var userData = [{
+	name:'Roy',
+	department:'FET'
+},{
+	name:'Melen',
+	department:'FET'
+},{
+	name:'Yang',
+	department:'FET'
+},{
+	name:'Renian',
+	department:'FET'
+},{
+	name:'Gary',
+	department:'IT'
+},{
+	name:'Sky',
+	department:'IT'
+},{
+	name:'Lydia',
+	department:'BU'
+}];
+
+function refreshSelectUser(datas){
+	var selectUser = $("#selectUser");
+		selectUser.empty();
+		for(var i in datas){
+		var user = datas[i];
+			var option = $("<option></option>");
+			option.text(user.name).val(user.name);
+			selectUser.append(option);
+		}
+}
+function initCheckUser(){
+	var checkUser = $("#checkUser");
+		checkUser.empty();
+		var departmentMap = {};
+		for(var i in userData){
+			var user = userData[i];
+			departmentMap[user.department] = [];
+		}
+		for(var i in userData){
+			var user = userData[i];
+			var option = $("<option></option>");
+			departmentMap[user.department].push(user);
+		}
+		for(var i in departmentMap){
+			var departmentBox = $("<div></div>");
+			departmentBox.addClass("departmentBox");
+			departmentBox.addClass("departmentBox_" + i);
+			var h4 = $("<h4></h4>");
+			h4.text(i);
+			departmentBox.append(h4);
+			var departmentData = departmentMap[i];
+			for(var j in departmentData){
+				var user = departmentData[j];
+				var userDataBox = $("<div></div>");
+				userDataBox.addClass("checkUserName");
+				userDataBox.addClass("checkUserName_"+user.name);
+				var checkbox = $("<input type='checkbox' name='checkUserName'/>");
+				checkbox.val(user.name);
+				userDataBox.append(checkbox);
+				var span = $("<span></span>");
+				span.text(user.name);
+				userDataBox.append(span);
+				departmentBox.append(userDataBox);
+			}
+			checkUser.append(departmentBox);
+		}
+}
+function refresh(){
+	refreshDepartmentBox();
+	refreshCheckUser();
+}
+function refreshDepartmentBox(){
+	var selectDepartment = $("[name='department']:checked");
+	if(selectDepartment.length > 0){
+		$(".departmentBox").hide();
+		for(var i = 0; i < selectDepartment.length; i++){
+			$(".departmentBox_"+$(selectDepartment[i]).val()).show();
+		}
+	}else{
+		$(".departmentBox").show();
+	}
+}
+function refreshCheckUser(){
+	var inputUserName = $("#inputUserName").val();
+	$(".checkUserName").hide();
+	if(inputUserName != ""){
+		$("[name='checkUserName']").each(function(){
+			if($(this).val().toLowerCase().indexOf(inputUserName.toLowerCase()) > -1){
+				$(".checkUserName_"+$(this).val()).show();
+			}
+		});
+	}else{
+		$(".checkUserName").show();
+	}
+	checkDepartment();
+}
+function checkDepartment(){
+	var departmentBox = $(".departmentBox:visible");
+	departmentBox.each(function(){
+		var checkUserName = $(this).find(".checkUserName:visible");
+		if(checkUserName.length <= 0){
+			$(this).hide();
+		}
+	});
+}
+$("[name='department']").change(refresh);
+$("#inputUserName").keyup(refresh);
+$(initCheckUser);
+</script>
+</html>
