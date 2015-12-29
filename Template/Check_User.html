@@ -25,7 +25,8 @@
 <script>
 var userData = [{
 	name:'Roy',
-	department:'FET'
+	department:'FET',
+	checked:true
 },{
 	name:'Melen',
 	department:'FET'
@@ -44,6 +45,16 @@ var userData = [{
 },{
 	name:'Lydia',
 	department:'BU'
+},{
+	name:'AAA1',
+	department:'AAA'
+},{
+	name:'BBB1',
+	department:'BBB',
+	checked:true
+},{
+	name:'CCC1',
+	department:'CCC'
 }];
 
 function refreshSelectUser(datas){
@@ -84,6 +95,9 @@ function initCheckUser(){
 				userDataBox.addClass("checkUserName_"+user.name);
 				var checkbox = $("<input type='checkbox' name='checkUserName'/>");
 				checkbox.val(user.name);
+				if(user.checked){
+					checkbox.prop("checked",true);
+				}
 				userDataBox.append(checkbox);
 				var span = $("<span></span>");
 				span.text(user.name);
