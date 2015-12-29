@@ -1,3 +1,6 @@
 {
-	"rows":[{"id":0,"cell":["Banner",true]}]
+	"rows":[
+		{"id":0,"cell":["Banner",true]},
+		{"id":1,"cell":["猜你喜歡",true]}
+	]
 }
