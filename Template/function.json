@@ -1,6 +1,3 @@
 {
-	"rows":[{
-		"functionName":"Banner",
-		"available":true
-	}]
+	"rows":[{"id":0,"cell":["Banner",true]}]
 }
