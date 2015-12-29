@@ -1,6 +1,7 @@
 {
 	"rows":[
-		{"id":0,"cell":["Banner",true]},
-		{"id":1,"cell":["猜你喜歡",true]}
+		{"id":0,"cell":["Banner",'true','上方橫幅']},
+		{"id":1,"cell":["Crumb",'true','麵包屑']},
+		{"id":2,"cell":["SideBar",'false','左方列表']}
 	]
 }
