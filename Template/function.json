@@ -1,7 +1,7 @@
 {
 	"rows":[
-		{"id":0,"cell":["Banner",'true','上方橫幅']},
-		{"id":1,"cell":["Crumb",'true','麵包屑']},
-		{"id":2,"cell":["SideBar",'false','左方列表']}
+		{"id":0,"cell":["Banner","true","上方橫幅"]},
+		{"id":1,"cell":["Crumb","true","麵包屑"]},
+		{"id":2,"cell":["SideBar","false","左方列表"]}
 	]
 }
