@@ -7,7 +7,10 @@ console.log(document.body.clientHeight);
 iframe2
 <a href="iframe1.html">iframe1</a>
 <script>
-var iframeContainer = document.getElementById("resizeIframe");
-iframeContainer.src="resize.html?height="+document.body.scrollHeight;
-console.log(document.body.scrollHeight);
+function timeChange() {
+	var iframeContainer = document.getElementById("resizeIframe");
+	iframeContainer.src="resize.html?height="+document.body.scrollHeight;
+	console.log(document.body.scrollHeight);
+}
+setTimeout(timeChange, 100);
 </script>
