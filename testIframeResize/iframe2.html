@@ -3,12 +3,12 @@
 var iframeContainer = document.getElementById("resizeIframe");
 iframeContainer.src="resize.html?height=400";
 console.log(document.body.clientHeight);
+function onloadChange() {
+	var iframeContainer = document.getElementById("resizeIframe");
+	iframeContainer.src="resize.html?height="+document.body.scrollHeight;
+	console.log(document.body.scrollHeight);
+}
+document.onload=onloadChange;
 </script>
 iframe2
 <a href="iframe1.html">iframe1</a>
-<img src="flower.jpg"/>
-<script>
-var iframeContainer = document.getElementById("resizeIframe");
-iframeContainer.src="resize.html?height="+document.body.scrollHeight;
-console.log(document.body.scrollHeight);
-</script>
