@@ -1,8 +1,10 @@
 <body>
 <script>
 function resizeIframeHeight(height) {
-	document.getElementById("testResizeIframe").height=height;
-	console.log("resizeIframeHeight" + height);
+	if((navigator && navigator.userAgent && !navigator.userAgent.match(/(iPod|iPhone|iPad)/))) {
+		document.getElementById("testResizeIframe").height=height;
+		console.log("resizeIframeHeight" + height);
+	}
 }
 </script>
 <iframe id="testResizeIframe" src="iframe1.html">
