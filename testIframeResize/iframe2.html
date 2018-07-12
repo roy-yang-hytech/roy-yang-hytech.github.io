@@ -1,14 +1,17 @@
 <iframe id="resizeIframe" style="display:none;"></iframe>
 <script>
 var iframeContainer = document.getElementById("resizeIframe");
-iframeContainer.src="resize.html?height=400";
-console.log(document.body.clientHeight);
+
 function onloadChange() {
+	iframeContainer.onload=function(){};
 	var iframeContainer = document.getElementById("resizeIframe");
 	iframeContainer.src="resize.html?height="+document.body.scrollHeight;
 	console.log(document.body.scrollHeight);
 }
-document.body.onload=onloadChange;
+
+iframeContainer.onload=onloadChange;
+iframeContainer.src="resize.html?height=400";
+console.log(document.body.clientHeight);
 </script>
 iframe2
 <a href="iframe1.html">iframe1</a>
