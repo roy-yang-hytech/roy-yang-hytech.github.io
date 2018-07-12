@@ -1,0 +1,28 @@
+<script>
+function getParam() {
+	var queryString = window.location.search;
+	queryString = queryString.replace("?","");
+	var params = queryString.split("&");
+	var result = {};
+	if(params && params.length > 0) {
+    	for(var i in params) {
+    		var paramString = params[i];
+    		if(paramString) {
+    			var param = paramString.split("=");
+    			if(param && param.length > 0) {
+    				var key = param[0];
+    				var value = null;
+    				// 目前不支援陣列
+    				if(param.length > 1) {
+    					value = param[1];
+    				}
+    				result[key] = value;
+    			}
+    		}
+    	}
+	}
+	return result;
+}
+var param = getParam();
+parent.parent.resizeIframeHeight(param.height);
+</script>
