@@ -1,16 +1,20 @@
 <body>
 <a onclick="toGoogle();">ToGoogle</a>
 <script>
-if(i) {
-	alert("has i");
-	clearTimeout(i);
-} else {
-	alert("no i");
+var i;
+function clearDirect() {
+	if(i) {
+		alert("has i");
+		clearTimeout(i);
+	} else {
+		alert("no i");
+	}
 }
 function toGoogle() {
 	i = setTimeout(function() {
 		location.href = 'https://www.google.com/';
 	}, 5000);
 }
+clearDirect();
 </script>
 </body>
